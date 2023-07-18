@@ -1,30 +1,38 @@
-// Lista de contactos
-let contactos = [];
+/// Lista de contactos predefinidos
+let contactos = [
+  "John Doe",
+  "Jane Smith",
+  "Michael Johnson",
+  "Emily Davis",
+];
 
-// Función para crear un nuevo contacto
-function crearContacto(id, nombres, apellidos, telefono, ciudad, direccion) {
-  let nuevoContacto = {
-    id: id,
-    nombres: nombres,
-    apellidos: apellidos,
-    telefono: telefono,
-    ubicaciones: {
-      ciudad: ciudad,
-      direccion: direccion
-    }
-  };
-  contactos.push(nuevoContacto);
+// Función para añadir un nuevo contacto a la lista
+function agregarContacto(nombre) {
+  contactos.push(nombre);
 }
 
-// Función para eliminar un contacto por su ID
-function eliminarContacto(id) {
-  contactos = contactos.filter(contacto => contacto.id !== id);
+// Función para borrar un contacto existente de la lista
+function borrarContacto(nombre) {
+  let indice = contactos.indexOf(nombre);
+  if (indice !== -1) {
+    contactos.splice(indice, 1);
+  }
+}
+
+// Función para imprimir los contactos en la consola
+function imprimirContactos() {
+ alert("Lista de contactos:");
+  for (let i = 0; i < contactos.length; i++) {
+    alert(contactos[i]);
+  }
 }
 
 // Ejemplo de uso
-crearContacto(1, "Juan", "Pérez", "123456789", "Ciudad Ejemplo", "Calle Principal 123");
-crearContacto(2, "María", "López", "987654321", "Otra Ciudad", "Avenida Secundaria 456");
-console.log(contactos);
+agregarContacto("Sarah Johnson");
+agregarContacto("Robert Smith");
 
-eliminarContacto(1);
-console.log(contactos);
+imprimirContactos();
+
+borrarContacto("John Doe");
+
+imprimirContactos();
